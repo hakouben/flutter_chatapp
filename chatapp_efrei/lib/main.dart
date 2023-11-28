@@ -1,7 +1,6 @@
 import 'package:chatapp_efrei/const_var.dart';
 import 'package:chatapp_efrei/firebase_options.dart';
 
-import 'package:chatapp_efrei/services/auth/auth_gate.dart';
 import 'package:chatapp_efrei/services/auth/auth_service.dart';
 import 'package:chatapp_efrei/services/auth/loginorsignup.dart';
 

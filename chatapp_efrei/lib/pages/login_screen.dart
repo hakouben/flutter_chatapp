@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
               GradientButton(btntext: 'Sign in', ontap: widget.on),
               const SizedBox(height: 40),
               GestureDetector(
-                onTap: widget.on,
+                onTap: signIn,
                 child: const Text(
                   'pas encore de compte ? créez en un',
                   style: TextStyle(

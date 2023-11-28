@@ -75,7 +75,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 controller: _confirmation,
               ),
               const SizedBox(height: 20),
-              GradientButton(btntext: 'Sign up', ontap: widget.on),
+              GradientButton(btntext: 'Sign up', ontap: signUp),
               const SizedBox(height: 40),
               GestureDetector(
                 onTap: widget.on,
