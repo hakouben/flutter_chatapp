@@ -1,10 +1,9 @@
-import 'dart:html';
-
 import 'package:chatapp_efrei/services/chat/chat_service.dart';
+import 'package:chatapp_efrei/widgets/chat_bulle.dart';
 import 'package:chatapp_efrei/widgets/login_field.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatefulWidget {
@@ -35,12 +34,14 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: const Color(0xFF7ebc5c),
         title: Text(widget.receiverUserEmail),
       ),
       body: Column(
         children: [
           Expanded(child: _builderMessageList()),
-          _buildMessageInput()
+          _buildMessageInput(),
+          const SizedBox(height: 25),
         ],
       ),
     );
@@ -72,27 +73,42 @@ class _ChatPageState extends State<ChatPage> {
         : Alignment.centerLeft;
     return Container(
       alignment: alignment,
-      child: Column(
-        children: [Text(data['senderEmail']), Text(data['message'])],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+            crossAxisAlignment: (data['senderID'] == _auth.currentUser!.uid)
+                ? CrossAxisAlignment.end
+                : CrossAxisAlignment.start,
+            mainAxisAlignment: (data['senderID'] == _auth.currentUser!.uid)
+                ? MainAxisAlignment.end
+                : MainAxisAlignment.start,
+            children: [
+              Text(data['senderEmail']),
+              const SizedBox(height: 4),
+              Chatbulle(message: data['message'])
+            ]),
       ),
     );
   }
 
   Widget _buildMessageInput() {
-    return Row(
-      children: [
-        Expanded(
-          child: LoginField(
-            controller: _messageController,
-            ob: false,
-            hintText: 'Type a message',
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25),
+      child: Row(
+        children: [
+          Expanded(
+            child: LoginField(
+              controller: _messageController,
+              ob: false,
+              hintText: 'Type a message',
+            ),
           ),
-        ),
-        IconButton(
-          onPressed: sendMessage,
-          icon: const Icon(Icons.send),
-        ),
-      ],
+          IconButton(
+            onPressed: sendMessage,
+            icon: const Icon(Icons.send),
+          ),
+        ],
+      ),
     );
   }
 }
