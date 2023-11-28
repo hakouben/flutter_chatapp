@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:chatapp_efrei/const_var.dart';
 
+// ignore: must_be_immutable
 class LoginField extends StatelessWidget {
   final String hintText;
-  const LoginField({
+  bool ob;
+  LoginField({
     Key? key,
     required this.hintText,
+    this.ob = false,
   }) : super(key: key);
 
   @override
@@ -15,6 +18,7 @@ class LoginField extends StatelessWidget {
         maxWidth: 400,
       ),
       child: TextFormField(
+        obscureText: ob,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(27),
           enabledBorder: OutlineInputBorder(

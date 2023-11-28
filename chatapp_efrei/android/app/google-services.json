@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1032075774141",
+    "project_id": "efreichatapp",
+    "storage_bucket": "efreichatapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032075774141:android:f01ab4372933e172070fd4",
+        "android_client_info": {
+          "package_name": "com.example.chatapp_efrei"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC0I4UCAQtYxYY4YCNjTySYzosHY-7Puw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
