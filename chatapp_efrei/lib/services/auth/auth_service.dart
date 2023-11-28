@@ -6,6 +6,7 @@ class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
   Future<UserCredential> signInWithEmailAndPassword(
       String email, String password) async {
@@ -22,10 +23,6 @@ class AuthService extends ChangeNotifier {
     }
   }
 
-  Future<void> signOut() async {
-    return await FirebaseAuth.instance.signOut();
-  }
-
   Future<UserCredential> signUpWithEmailAndPassword(
       String email, String password) async {
     try {
@@ -39,5 +36,9 @@ class AuthService extends ChangeNotifier {
     } on FirebaseAuthException catch (e) {
       throw Exception(e.code);
     }
+  }
+
+  Future<void> signOut() async {
+    return await FirebaseAuth.instance.signOut();
   }
 }
