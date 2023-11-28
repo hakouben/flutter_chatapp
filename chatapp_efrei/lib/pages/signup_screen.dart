@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:chatapp_efrei/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +19,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _confirmation = TextEditingController();
-  Future<void> signUp() async {
+  void signUp() async {
     if (_password.text != _confirmation.text) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('passwords do not match'),
@@ -73,7 +75,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 controller: _confirmation,
               ),
               const SizedBox(height: 20),
-              GradientButton(btntext: 'Sign up', ontap: () {}),
+              GradientButton(btntext: 'Sign up', ontap: widget.on),
               const SizedBox(height: 40),
               GestureDetector(
                 onTap: widget.on,

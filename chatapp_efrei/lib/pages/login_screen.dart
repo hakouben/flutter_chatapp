@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: _password,
               ),
               const SizedBox(height: 20),
-              GradientButton(btntext: 'Sign in', ontap: () {}),
+              GradientButton(btntext: 'Sign in', ontap: widget.on),
               const SizedBox(height: 40),
               GestureDetector(
                 onTap: widget.on,

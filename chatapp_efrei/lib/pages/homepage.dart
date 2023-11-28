@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:chatapp_efrei/pages/chat_page.dart';
 import 'package:chatapp_efrei/services/auth/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -44,7 +42,7 @@ class _HomePageState extends State<HomePage> {
         stream: FirebaseFirestore.instance.collection('users').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Text('Something went wrong');
+            return const Text('Something went wrong');
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Text('Loadung');
