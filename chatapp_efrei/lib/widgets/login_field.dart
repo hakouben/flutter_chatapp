@@ -4,11 +4,13 @@ import 'package:chatapp_efrei/const_var.dart';
 // ignore: must_be_immutable
 class LoginField extends StatelessWidget {
   final String hintText;
+  final TextEditingController controller;
   bool ob;
   LoginField({
     Key? key,
     required this.hintText,
     this.ob = false,
+    required this.controller,
   }) : super(key: key);
 
   @override

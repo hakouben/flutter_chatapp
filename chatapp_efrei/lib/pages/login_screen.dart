@@ -1,4 +1,6 @@
+import 'package:chatapp_efrei/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/login_field.dart';
 import '../widgets/btn_deg.dart';
@@ -15,7 +17,20 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  void signup() {}
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+  void signIn() {
+    final authService = Provider.of<AuthService>(context, listen: false);
+    try {
+      authService.signInWithEmailAndPassword(_email.text, _password.text);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toString()),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +51,13 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 20),
               const SizedBox(height: 15),
               const SizedBox(height: 15),
-              LoginField(hintText: 'Email'),
+              LoginField(hintText: 'Email', controller: _email),
               const SizedBox(height: 15),
-              LoginField(hintText: 'Password', ob: true),
+              LoginField(
+                hintText: 'Password',
+                ob: true,
+                controller: _password,
+              ),
               const SizedBox(height: 20),
               GradientButton(btntext: 'Sign in', ontap: () {}),
               const SizedBox(height: 40),

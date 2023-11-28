@@ -1,3 +1,4 @@
+import 'package:chatapp_efrei/pages/homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class Authgate extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasData) {
-          return const Center(child: Homepage());
+          return const Center(child: HomePage());
         } else if (snapshot.hasError) {
           return const Center(child: Text('Something Went Wrong'));
         } else {
